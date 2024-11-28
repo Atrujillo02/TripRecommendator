@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
-
+require('dotenv').config();
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5173;
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../dist')));
@@ -19,10 +19,10 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   app.get('/api/test', (req, res) => {
-    res.json({ message: '¡El servidor con Express está funcionando!' });
+    res.json({ message: 'The Express server is up and running!' });
   });
 }
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Server running on en http://localhost:${PORT}`);
 });
